@@ -59,6 +59,7 @@ public class Game extends Application {
         });
 
         setCurrentTurn(currentTurnText, "X");
+        // AnchorPane.setBottomAnchor(currentTurnText, 0.0);
 
         currentTurnText.setFill(Color.BLACK);
 
