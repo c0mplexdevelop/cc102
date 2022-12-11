@@ -26,7 +26,7 @@ public class AIGame extends Application {
     Board board = new Board(createBoard());
     List<Rectangle> rects = new ArrayList<Rectangle>();
     String winningPlayer = null;
-    Difficulty difficulty = Difficulty.HARD;
+    Difficulty difficulty = Difficulty.EASY;
     
 
     public static void main(String[] args) {
@@ -193,6 +193,8 @@ public class AIGame extends Application {
             currentTurn = (currentTurn=="X") ? "O" : "X";
             placeAILetter(root, rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
             setCurrentTurn(currentTurnText, currentTurn);
+        } else if (checkIfDraw(board)) {
+            return; //Prevent infinite recursion when the game is a draw
         } else {
             randomInput(board, root);
         }
@@ -223,6 +225,8 @@ public class AIGame extends Application {
                 }
             }
         }
+
+        if(checkIfDraw(board)) {return;} // Fixes the bug where the AI would place a letter even after its a draw.
 
         board.board[bestMove/3][bestMove%3] = currentTurn;
         currentTurn = currentTurn=="X" ? "O" : "X";
