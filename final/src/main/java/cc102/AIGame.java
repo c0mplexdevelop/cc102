@@ -26,7 +26,7 @@ public class AIGame extends Application {
     Board board = new Board(createBoard());
     List<Rectangle> rects = new ArrayList<Rectangle>();
     String winningPlayer = null;
-    Difficulty difficulty = Difficulty.EASY;
+    Difficulty difficulty = Difficulty.HARD;
     
 
     public static void main(String[] args) {
